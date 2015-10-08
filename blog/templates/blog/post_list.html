@@ -7,11 +7,11 @@
             <h1><a href="/">Django Girls Blog</a></h1>
         </div>
 
-        {% for pos in post %}
+        {% for post in posts %}
             <div>
-                <p>published: {{ pos.published_date }}</p>
-                <h1><a href="">{{ pos.title }}</a></h1>
-                <p>{{ pos.text|linebreaks }}</p>
+                <p>published: {{ post.published_date }}</p>
+                <h1><a href="">{{ post.title }}</a></h1>
+                <p>{{ post.text|linebreaks }}</p>
             </div>
         {% endfor %}
 
