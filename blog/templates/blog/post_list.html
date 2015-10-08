@@ -1,22 +1,21 @@
 <html>
-        <head>
-            <title>Django Girls blog</title>
-        </head>
-        <body>
-            <div>
-                <h1><a href="">Django Girls Blog</a></h1>
-            </div>
+     <head>
+         <title>Django Girls blog</title>
+     </head>
+     <body>
+        <div>
+            <h1><a href="/">Django Girls Blog</a></h1>
+        </div>
 
+        {% for pos in post %}
             <div>
-                <p>published: 14.06.2014, 12:14</p>
-                <h2><a href="">My first post</a></h2>
-                <p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+                <p>published: {{ pos.published_date }}</p>
+                <h1><a href="">{{ pos.title }}</a></h1>
+                <p>{{ pos.text|linebreaks }}</p>
             </div>
+        {% endfor %}
 
-            <div>
-                <p>published: 14.06.2014, 12:14</p>
-                <h2><a href="">My second post</a></h2>
-                <p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut f.</p>
-            </div>
-        </body>
+       </body>
     </html>
+
+
