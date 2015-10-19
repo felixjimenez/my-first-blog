@@ -1,0 +1,12 @@
+{% extends "blog/base.html" %}
+    {% block content %}
+        {% for alumno in alumnos %}
+                <table>
+                  <tr>
+                    <td width="200"> {{ alumno.cedula }}</td>
+                    <td width="200"> {{ alumno.nombre }} </td>
+                    <td width="200"> {{ alumno.apellido }} </td>
+                  </tr>
+                 </table>
+        {% endfor %}
+    {% endblock content %}

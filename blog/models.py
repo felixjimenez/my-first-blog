@@ -14,27 +14,38 @@ class Post(models.Model):
     def __str__(self):
         return self.title
 
+
 class Institucion(models.Model):
     nombre  = models.CharField(max_length=18,default='IUTIRLA')
     sede    = models.CharField(max_length=18,default='Chaguaramos')
     rif     = models.CharField(max_length=18)
+    def __str__(self):
+        return self.nombre
 
 class Carrera(models.Model):
     institucion = models.ForeignKey(Institucion)
     nombre = models.CharField(max_length=18,default='Informatica')
+    def __str__(self):
+        return self.nombre
 
 class Materia(models.Model):
     carrera = models.ForeignKey(Carrera)
     nombre = models.CharField(max_length=20)
+    def __str__(self):
+        return self.nombre
 
 class Aula(models.Model):
     nombre = models.CharField(max_length=8)
     direccion = models.CharField(max_length=15)
+    def __str__(self):
+        return self.nombre
 
 class Seccion(models.Model):
     materia = models.ForeignKey(Materia)
     aula = models.ForeignKey(Aula)
     seccion = models.CharField(max_length=10)
+    def __str__(self):
+        return self.seccion
 
 class Alumno(models.Model):
     cedula   = models.IntegerField()
@@ -42,13 +53,23 @@ class Alumno(models.Model):
     apellido = models.CharField(max_length=20)
     email    = models.EmailField()
 #    foto     = models.ImageField()
+    def __str__(self):
+        return self.nombre
 
 class Inscripcion(models.Model):
     alumno  = models.ForeignKey(Alumno)
     seccion = models.ForeignKey(Seccion)
-    fecha   = models.DateField(default=timezone)
+    fecha = models.DateTimeField(blank=True, null=True)
+
+    def inscrito(self):
+        self.fecha= timezone.now()
+        self.save()
+    def __str__(self):
+        return self.alumno.nombre
 
 class Nota(models.Model):
     inscripcion = models.ForeignKey(Inscripcion)
-    fechaevalua = models.DateField(default=timezone)
+    fechaevalua = models.DateTimeField(default=timezone.now)
     nota = models.IntegerField(default=0)
+    def __str__(self):
+        return self.inscripcion.alumno.nombre

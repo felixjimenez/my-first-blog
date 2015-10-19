@@ -1,0 +1,12 @@
+{% extends "blog/base.html" %}
+    {% block content %}
+        {% for inscripcion in inscripciones %}
+                <table>
+                  <tr>
+                    <td width="170"> {{ inscripcion.alumno }}</td>
+                    <td width="170"> {{ inscripcion.alumno.apellido }}</td>
+                    <td width="90"> {{ inscripcion.seccion }} </td>
+                  </tr>
+                 </table>
+        {% endfor %}
+    {% endblock content %}
