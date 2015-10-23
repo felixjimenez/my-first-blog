@@ -27,11 +27,39 @@ def post_list(request):
     posts = Post.objects.filter(published_date__lte = timezone.now()).order_by('published_date')
     return render(request, 'blog/post_list.html', {'posts':posts})
 
-def inscripcion_list(request):
-    inscripciones = Inscripcion.objects.filter(fecha__lte = timezone.now()).order_by('seccion')
+def nota_info1(request):
+    notas = Nota.objects.filter().order_by('fechaevalua')
+    return render(request,'blog/notas_list.html',{'notas':notas})
+def nota_info2(request):
+    notas = Nota.objects.filter().order_by('fechaevalua')
+    return render(request,'blog/notas_list.html',{'notas':notas})
+def nota_bada1(request):
+    notas = Nota.objects.filter().order_by('fechaevalua')
+    return render(request,'blog/notas_list.html',{'notas':notas})
+def nota_leng2(request):
+    notas = Nota.objects.filter().order_by('fechaevalua')
+    return render(request,'blog/notas_list.html',{'notas':notas})
+
+def inscripcion_info1(request):
+    inscripciones = Inscripcion.objects.filter(seccion = 4).order_by('alumno')
     return render(request,'blog/inscripcion_list.html',{'inscripciones':inscripciones})
 
+def inscripcion_audi1(request):
+    inscripciones = Inscripcion.objects.filter(seccion = 2).order_by('alumno')
+    return render(request,'blog/inscripcion_list.html',{'inscripciones':inscripciones})
+
+def inscripcion_leng2(request):
+    inscripciones = Inscripcion.objects.filter(seccion = 3).order_by('alumno')
+    return render(request,'blog/inscripcion_list.html',{'inscripciones':inscripciones})
+
+def inscripcion_bada1(request):
+    inscripciones = Inscripcion.objects.filter(seccion = 1).order_by('alumno')
+    return render(request,'blog/inscripcion_list.html',{'inscripciones':inscripciones})
+
+def inscripcion_info2(request):
+    inscripciones = Inscripcion.objects.filter(seccion = 5).order_by('alumno')
+    return render(request,'blog/inscripcion_list.html',{'inscripciones':inscripciones})
 
 def post_detail(request, pk):
-    post = get_object_or_404(Post, pk=pk)
+    post = get_object_or_404(Post, pk = pk)
     return render(request, 'blog/post_detail.html', {'post': post})

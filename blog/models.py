@@ -24,19 +24,19 @@ class Institucion(models.Model):
 
 class Carrera(models.Model):
     institucion = models.ForeignKey(Institucion)
-    nombre = models.CharField(max_length=18,default='Informatica')
+    nombre = models.CharField(max_length=25,default='Informatica')
     def __str__(self):
         return self.nombre
 
 class Materia(models.Model):
     carrera = models.ForeignKey(Carrera)
-    nombre = models.CharField(max_length=20)
+    nombre = models.CharField(max_length=25)
     def __str__(self):
         return self.nombre
 
 class Aula(models.Model):
     nombre = models.CharField(max_length=8)
-    direccion = models.CharField(max_length=15)
+    direccion = models.CharField(max_length=20)
     def __str__(self):
         return self.nombre
 
@@ -48,10 +48,10 @@ class Seccion(models.Model):
         return self.seccion
 
 class Alumno(models.Model):
-    cedula   = models.IntegerField()
-    nombre   = models.CharField(max_length=20)
-    apellido = models.CharField(max_length=20)
-    email    = models.EmailField()
+    cedula   = models.IntegerField(unique=True)
+    nombre   = models.CharField(max_length=25)
+    apellido = models.CharField(max_length=25)
+    email    = models.EmailField(default='a@a.com')
 #    foto     = models.ImageField()
     def __str__(self):
         return self.nombre
@@ -71,5 +71,7 @@ class Nota(models.Model):
     inscripcion = models.ForeignKey(Inscripcion)
     fechaevalua = models.DateTimeField(default=timezone.now)
     nota = models.IntegerField(default=0)
+    observacion = models.CharField(max_length=50,default='no asistio')
     def __str__(self):
-        return self.inscripcion.alumno.nombre
+        nalumno = self.inscripcion.alumno.nombre
+        return nalumno

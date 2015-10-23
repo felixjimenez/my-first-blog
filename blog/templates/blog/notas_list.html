@@ -1,0 +1,15 @@
+{% extends "blog/base.html" %}
+    {% block content %}
+        {% for nota in notas %}
+          {% if nota.inscripcion.seccion.id == 5 %}
+                <table>
+                  <tr>
+                    <td width="170"> {{ nota.inscripcion.alumno }}</td>
+                    <td width="170"> {{ nota.inscripcion.alumno.apellido }}</td>
+                    <td width="230"> {{ nota.fechaevalua }}</td>
+                    <td width="20"> {{ nota.nota }} </td>
+                  </tr>
+                 </table>
+          {% endif %}
+        {% endfor %}
+    {% endblock content %}
