@@ -73,5 +73,5 @@ class Nota(models.Model):
     nota = models.IntegerField(default=0)
     observacion = models.CharField(max_length=50,default='no asistio')
     def __str__(self):
-        nalumno = self.inscripcion.alumno.nombre
+        nalumno = self.inscripcion.alumno.nombre +''+self.inscripcion.alumno.apellido
         return nalumno

@@ -9,10 +9,10 @@ class AlumnoAdmin(admin.ModelAdmin):
     search_fields =('nombre','apellido')
 
 class InscripcionAdmin(admin.ModelAdmin):
-    list_display = ('alumno','seccion','fecha')
-    list_editable = ('alumno','seccion','fecha')
+#    list_display = ('alumno','seccion','fecha')
+#    list_editable = ('alumno','seccion','fecha')
     List_filter = ('alumno','seccion','fecha')
-    search_fields =('alumno','seccion','fecha')
+#    search_fields =('alumno','seccion','fecha')
 
 class NotaAdmin(admin.ModelAdmin):
     list_display = ('inscripcion','nota','fechaevalua')
