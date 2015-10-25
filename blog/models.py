@@ -54,24 +54,23 @@ class Alumno(models.Model):
     email    = models.EmailField(default='a@a.com')
 #    foto     = models.ImageField()
     def __str__(self):
-        return self.nombre
+        nalumno = self.nombre + ' '+ self.apellido
+        return nalumno
 
 class Inscripcion(models.Model):
     alumno  = models.ForeignKey(Alumno)
     seccion = models.ForeignKey(Seccion)
-    fecha = models.DateTimeField(blank=True, null=True)
-
+    fecha =   models.DateTimeField(blank=True, null=True)
     def inscrito(self):
         self.fecha= timezone.now()
         self.save()
     def __str__(self):
-        return self.alumno.nombre
+        return self.alumno
 
 class Nota(models.Model):
     inscripcion = models.ForeignKey(Inscripcion)
     fechaevalua = models.DateTimeField(default=timezone.now)
-    nota = models.IntegerField(default=0)
+    nota        = models.IntegerField(default=0)
     observacion = models.CharField(max_length=50,default='no asistio')
     def __str__(self):
-        nalumno = self.inscripcion.alumno.nombre +''+self.inscripcion.alumno.apellido
-        return nalumno
+        return self.inscripcion.alumno
