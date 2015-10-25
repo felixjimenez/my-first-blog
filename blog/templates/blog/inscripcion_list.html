@@ -3,10 +3,14 @@
         {% for inscripcion in inscripciones %}
                 <table>
                   <tr>
-                    <td width="120">  {{ inscripcion.alumno.cedula }}</td>
-                    <td width="190"> {{ inscripcion.alumno.apellido }}</td>
-                    <td width="190"> {{ inscripcion.alumno.nombre }} </td>
+                    <td width="120"> {{ inscripcion.alumno.cedula }}</td>
+                    <td width="210"> {{ inscripcion.alumno.apellido }}</td>
+                    <td width="210"> {{ inscripcion.alumno.nombre }} </td>
+                    <td width="170"> {{ inscripcion.seccion }} </td>
+                    <td width="210"> {{ inscripcion.fecha }} </td>
                   </tr>
-                 </table>
+             </table>
         {% endfor %}
+        <a href="{% url "blog.views.alumn_list" %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+
     {% endblock content %}

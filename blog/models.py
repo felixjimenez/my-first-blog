@@ -7,13 +7,11 @@ class Post(models.Model):
     text = models.TextField()
     created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(blank=True, null=True)
-
     def publish(self):
         self.published_date= timezone.now()
         self.save()
     def __str__(self):
         return self.title
-
 
 class Institucion(models.Model):
     nombre  = models.CharField(max_length=18,default='IUTIRLA')
@@ -52,10 +50,8 @@ class Alumno(models.Model):
     nombre   = models.CharField(max_length=25)
     apellido = models.CharField(max_length=25)
     email    = models.EmailField(default='a@a.com')
-#    foto     = models.ImageField()
     def __str__(self):
-        nalumno = self.nombre + ' '+ self.apellido
-        return nalumno
+        return self.nombre
 
 class Inscripcion(models.Model):
     alumno  = models.ForeignKey(Alumno)
@@ -73,4 +69,4 @@ class Nota(models.Model):
     nota        = models.IntegerField(default=0)
     observacion = models.CharField(max_length=50,default='no asistio')
     def __str__(self):
-        return self.inscripcion.alumno
+        return self.inscripcion.id

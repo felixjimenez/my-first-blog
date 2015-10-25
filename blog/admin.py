@@ -1,7 +1,6 @@
 from django.contrib import admin
 from .models  import Alumno, Aula, Carrera, Inscripcion, Institucion, Materia,Nota, Post, Seccion
 
-
 class AlumnoAdmin(admin.ModelAdmin):
     list_display =  ('cedula','nombre','apellido')
     list_editable = ('cedula','nombre','apellido')
@@ -32,12 +31,12 @@ class PostAdmin(admin.ModelAdmin):
     List_filter =   ('author','title','text')
     search_fields = ('author','title','text')
 
-admin.site.register(Alumno, AlumnoAdmin)
+admin.site.register(Alumno)
 admin.site.register(Aula)
 admin.site.register(Carrera)
-admin.site.register(Inscripcion, InscripcionAdmin)
+admin.site.register(Inscripcion)
 admin.site.register(Institucion)
-admin.site.register(Materia, MateriaAdmin)
+admin.site.register(Materia)
 admin.site.register(Nota)
 admin.site.register(Post, PostAdmin)
 admin.site.register(Seccion)

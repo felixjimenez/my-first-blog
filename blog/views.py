@@ -35,17 +35,17 @@ def nota_bada1(request):
 def nota_leng2(request):
     notas = Nota.objects.filter().order_by('fechaevalua')
     return render(request,'blog/notas_list.html',{'notas':notas})
+def inscripcion_bada1(request):
+    inscripciones = Inscripcion.objects.filter(seccion = 1).order_by('alumno')
+    return render(request,'blog/inscripcion_list.html',{'inscripciones':inscripciones})
+def inscripcion_leng2(request):
+    inscripciones = Inscripcion.objects.filter(seccion = 3).order_by('alumno')
+    return render(request,'blog/inscripcion_list.html',{'inscripciones':inscripciones})
 def inscripcion_info1(request):
     inscripciones = Inscripcion.objects.filter(seccion = 4).order_by('alumno')
     return render(request,'blog/inscripcion_list.html',{'inscripciones':inscripciones})
 def inscripcion_audi1(request):
     inscripciones = Inscripcion.objects.filter(seccion = 2).order_by('alumno')
-    return render(request,'blog/inscripcion_list.html',{'inscripciones':inscripciones})
-def inscripcion_leng2(request):
-    inscripciones = Inscripcion.objects.filter(seccion = 3).order_by('alumno')
-    return render(request,'blog/inscripcion_list.html',{'inscripciones':inscripciones})
-def inscripcion_bada1(request):
-    inscripciones = Inscripcion.objects.filter(seccion = 1).order_by('alumno')
     return render(request,'blog/inscripcion_list.html',{'inscripciones':inscripciones})
 def inscripcion_info2(request):
     inscripciones = Inscripcion.objects.filter(seccion = 5).order_by('alumno')

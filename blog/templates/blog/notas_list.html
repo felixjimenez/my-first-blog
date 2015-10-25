@@ -4,10 +4,12 @@
           {% if nota.inscripcion.seccion.id == 5 %}
                 <table>
                   <tr>
-                    <td width="170"> {{ nota.inscripcion.alumno }}</td>
+                    <td width="170"> {{ nota.inscripcion.alumno.nombre }}</td>
                     <td width="170"> {{ nota.inscripcion.alumno.apellido }}</td>
-                    <td width="230"> {{ nota.fechaevalua }}</td>
-                    <td width="20"> {{ nota.nota }} </td>
+                    <td width="50">  {{ nota.nota }} </td>
+                    <td width="600"> {{ nota.observacion }} </td>
+                    <td width="900"> {{ nota.fechaevalua }}</td>
+
                   </tr>
                  </table>
           {% endif %}
