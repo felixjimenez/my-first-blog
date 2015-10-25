@@ -51,7 +51,7 @@ class Alumno(models.Model):
     apellido = models.CharField(max_length=25)
     email    = models.EmailField(default='a@a.com')
     def __str__(self):
-        return self.nombre
+        return self.id
 
 class Inscripcion(models.Model):
     alumno  = models.ForeignKey(Alumno)
@@ -61,7 +61,7 @@ class Inscripcion(models.Model):
         self.fecha= timezone.now()
         self.save()
     def __str__(self):
-        return self.alumno
+        return self.id
 
 class Nota(models.Model):
     inscripcion = models.ForeignKey(Inscripcion)
@@ -69,4 +69,4 @@ class Nota(models.Model):
     nota        = models.IntegerField(default=0)
     observacion = models.CharField(max_length=50,default='no asistio')
     def __str__(self):
-        return self.inscripcion.id
+        return self.id

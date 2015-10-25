@@ -2,16 +2,16 @@ from django.contrib import admin
 from .models  import Alumno, Aula, Carrera, Inscripcion, Institucion, Materia,Nota, Post, Seccion
 
 class AlumnoAdmin(admin.ModelAdmin):
-    list_display =  ('cedula','nombre','apellido')
-    list_editable = ('cedula','nombre','apellido')
-    List_filter =   ('cedula','nombre','apellido')
-    search_fields = ('cedula','nombre','apellido')
+    list_display =  ('id','cedula','nombre','apellido','email')
+    list_editable = ('id','cedula','nombre','apellido','email')
+    List_filter =   ('id','cedula','nombre','apellido','email')
+    search_fields = ('id','cedula','nombre','apellido','email')
 
 class InscripcionAdmin(admin.ModelAdmin):
-    list_display =  ('alumno','seccion','fecha')
-    list_editable = ('alumno','seccion','fecha')
-    List_filter =   ('alumno','seccion','fecha')
-    search_fields = ('alumno','seccion','fecha')
+    list_display =  ('id','alumno','seccion','fecha')
+    list_editable = ('id','alumno','seccion','fecha')
+    List_filter =   ('id','alumno','seccion','fecha')
+    search_fields = ('id','alumno','seccion','fecha')
 
 class NotaAdmin(admin.ModelAdmin):
     list_display =  ('inscripcion','nota','fechaevalua','observacion')
@@ -20,23 +20,35 @@ class NotaAdmin(admin.ModelAdmin):
     search_fields = ('inscripcion','nota','fechaevalua','observacion')
 
 class MateriaAdmin(admin.ModelAdmin):
-    list_display =  ('carrera','nombre')
-    list_editable = ('carrera','nombre')
-    List_filter =   ('carrera','nombre')
-    search_fields = ('carrera','nombre')
+    list_display =  ('id','carrera','nombre')
+    list_editable = ('id','carrera','nombre')
+    List_filter =   ('id','carrera','nombre')
+    search_fields = ('id','carrera','nombre')
 
 class PostAdmin(admin.ModelAdmin):
-    list_display =  ('author','title','text')
-    list_editable = ('author','title','text')
-    List_filter =   ('author','title','text')
-    search_fields = ('author','title','text')
+    list_display =  ('id','author','title','text')
+    list_editable = ('id','author','title','text')
+    List_filter =   ('id','author','title','text')
+    search_fields = ('id','author','title','text')
 
-admin.site.register(Alumno)
-admin.site.register(Aula)
-admin.site.register(Carrera)
-admin.site.register(Inscripcion)
-admin.site.register(Institucion)
-admin.site.register(Materia)
-admin.site.register(Nota)
+class CarreraAdmin(admin.ModelAdmin):
+    list_display =('id','institucion','nombre')
+
+class AulaAdmin(admin.ModelAdmin):
+    list_display =('id','direccion','nombre')
+
+class SeccionAdmin(admin.ModelAdmin):
+    list_display =('id','materia','aula','seccion')
+
+class InstitucionAdmin(admin.ModelAdmin):
+    list_display = ('id','nombre','sede','rif')
+
+admin.site.register(Alumno, AlumnoAdmin)
+admin.site.register(Aula, AulaAdmin)
+admin.site.register(Carrera, CarreraAdmin)
+admin.site.register(Inscripcion, InscripcionAdmin)
+admin.site.register(Institucion, InstitucionAdmin)
+admin.site.register(Materia, MateriaAdmin)
+admin.site.register(Nota, NotaAdmin)
 admin.site.register(Post, PostAdmin)
-admin.site.register(Seccion)
+admin.site.register(Seccion, SeccionAdmin)
