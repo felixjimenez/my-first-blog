@@ -15,14 +15,14 @@ class Post(models.Model):
 
 class Institucion(models.Model):
     nombre  = models.CharField(max_length=18,default='IUTIRLA')
-    sede    = models.CharField(max_length=18,default='Chaguaramos')
+    sede    = models.CharField(max_length=18,default='CC Chaguaramos')
     rif     = models.CharField(max_length=18)
     def __str__(self):
         return self.nombre
 
 class Carrera(models.Model):
     institucion = models.ForeignKey(Institucion)
-    nombre = models.CharField(max_length=25,default='Informatica')
+    nombre = models.CharField(max_length=35,default='Tecnico Superior en Informatica')
     def __str__(self):
         return self.nombre
 
@@ -34,7 +34,7 @@ class Materia(models.Model):
 
 class Aula(models.Model):
     nombre = models.CharField(max_length=8)
-    direccion = models.CharField(max_length=20)
+    direccion = models.CharField(max_length=50)
     def __str__(self):
         return self.nombre
 
@@ -51,7 +51,8 @@ class Alumno(models.Model):
     apellido = models.CharField(max_length=25)
     email    = models.EmailField(default='a@a.com')
     def __str__(self):
-        return self.id
+        nalumno = self.nombre+self.apellido
+        return nalumno
 
 class Inscripcion(models.Model):
     alumno  = models.ForeignKey(Alumno)
@@ -61,7 +62,7 @@ class Inscripcion(models.Model):
         self.fecha= timezone.now()
         self.save()
     def __str__(self):
-        return self.id
+        return self.alumno
 
 class Nota(models.Model):
     inscripcion = models.ForeignKey(Inscripcion)
@@ -69,4 +70,4 @@ class Nota(models.Model):
     nota        = models.IntegerField(default=0)
     observacion = models.CharField(max_length=50,default='no asistio')
     def __str__(self):
-        return self.id
+        return self.inscripcion
